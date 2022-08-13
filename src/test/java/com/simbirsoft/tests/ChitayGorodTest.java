@@ -3,10 +3,12 @@ package com.simbirsoft.tests;
 import com.github.javafaker.Faker;
 import com.simbirsoft.components.MenuItems;
 import com.simbirsoft.components.Vacancies;
+import com.simbirsoft.config.CredentialConfig;
 import com.simbirsoft.pages.BookStores;
 import com.simbirsoft.pages.DiscountPage;
 import com.simbirsoft.pages.JobsPage;
 import com.simbirsoft.pages.MainPage;
+import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -22,6 +24,8 @@ public class ChitayGorodTest extends TestBase {
     DiscountPage discountPage = new DiscountPage();
     JobsPage jobsPage = new JobsPage();
     static Faker faker = new Faker();
+
+    public static CredentialConfig credentials = ConfigFactory.create(CredentialConfig.class);
 
     @Test
     @DisplayName("Проверка сообщения об ошибке при вводе несуществующего логина и пароля при авторизации")
@@ -42,9 +46,9 @@ public class ChitayGorodTest extends TestBase {
 
         mainPage.loginForm.openLoginForm();
 
-        mainPage.loginForm.login("dankoffalexander@gmail.com", "Chitay2022");
+        mainPage.loginForm.login(credentials.user_login(), credentials.user_password());
 
-        mainPage.loginForm.checkSuccessfulLogin("Александр", "dankoffalexander@gmail.com");
+        mainPage.loginForm.checkSuccessfulLogin(credentials.user_login());
 
         mainPage.loginForm.logout();
     }
@@ -84,7 +88,7 @@ public class ChitayGorodTest extends TestBase {
 
         mainPage.loginForm.openLoginForm();
 
-        mainPage.loginForm.login("dankoffalexander@gmail.com", "Chitay2022");
+        mainPage.loginForm.login(credentials.user_login(), credentials.user_password());
 
         mainPage.cart.addBookToCart("Гарри Поттер и кубок огня");
 
@@ -108,7 +112,7 @@ public class ChitayGorodTest extends TestBase {
 
         mainPage.loginForm.openLoginForm();
 
-        mainPage.loginForm.login("dankoffalexander@gmail.com", "Chitay2022");
+        mainPage.loginForm.login(credentials.user_login(), credentials.user_password());
 
         discountPage.openDiscountCardInputForm();
 

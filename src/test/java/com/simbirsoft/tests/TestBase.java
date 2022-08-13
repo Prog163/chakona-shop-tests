@@ -1,6 +1,8 @@
 package com.simbirsoft.tests;
 
 import com.codeborne.selenide.Configuration;
+import com.simbirsoft.helpers.Attach;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 
 public class TestBase {
@@ -9,6 +11,14 @@ public class TestBase {
     static void setup() {
 
         Configuration.startMaximized = true;
-        Configuration.baseUrl = "https://www.chitai-gorod.ru";
+
+    }
+
+    @AfterEach
+    public void tearDown() {
+        Attach.screenshotAs("Last screenshot");
+        Attach.pageSource();
+        Attach.browserConsoleLogs();
+        Attach.addVideo();
     }
 }

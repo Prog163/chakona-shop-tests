@@ -49,8 +49,7 @@ public class LoginForm {
     }
 
     @Step("Проверка успешной авторизации")
-    public void checkSuccessfulLogin(String name, String email) {
-        profileMenu.shouldHave(Condition.text(name));
+    public void checkSuccessfulLogin(String email) {
         profileMenu.click();
 
         profileHeader.shouldHave(Condition.text(PROFILE_HEADER));
