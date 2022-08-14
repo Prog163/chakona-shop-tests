@@ -4,8 +4,8 @@
 ## UI-Automated tests for https://www.chitai-gorod.ru/
 
 ### Used tech stack:
-| Java | JUnit5 | Selenide | Gradle | IntelijIDEA | Allure Report | Allure Testops | Jenkins | Selenoid | Jira | Telegram |
-|------|--------|----------|--------|-------------|---------------|----------------|---------|----------|------|----------|
+| Java | JUnit5 | Selenide | Gradle | Intelij IDEA | Allure Report | Allure Testops | Jenkins | Selenoid | Jira | Telegram |
+|------|--------|----------|--------|--------------|---------------|----------------|---------|----------|------|----------|
 |![](images/JAVA.svg)|![](images/Junit5.svg)|![](images/Selenide.svg)|![](images/Gradle.svg)|![](images/IDEA.svg)|![](images/AllureReport.svg)|![](images/AllureTestops.svg)|![](images/Jenkins.svg)|![](images/Selenoid.svg)|<img src="images/Jira.svg" width=100 height=100>|![](images/Telegram.svg)|
 
 ### Launch Parameters:
