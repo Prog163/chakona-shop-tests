@@ -9,6 +9,7 @@ public interface CredentialConfig extends Config {
 
     String user_login();
     String user_password();
-    String user_name();
+    String remote_login();
+    String remote_password();
 
 }
