@@ -19,8 +19,7 @@ public class MainPage {
             subscribeInput = $(".js__subscribe-email"),
             subscribeButton = $(".js__subscribe-btn"),
             subscribeMessage = $(".js_subscribe_mess"),
-            category = $(".content h1"),
-            navigationMenuHeader = $(".navigation__title");
+            category = $(".content h1");
 
     private final ElementsCollection
             searchResults = $$(".product-card.js_product.js__product_card"),
@@ -29,7 +28,8 @@ public class MainPage {
             menu = $$(".js__nav__item"),
             productList = $$(".js__product_card"),
             productListFooter = $$(".product-card__footer"),
-            navigationItems = $$(".navigation__item");
+            navigationItems = $$(".navigation__item"),
+            navigationMenuHeader = $$(".navigation__title");
 
     private final String SUBSCRIBE_MESSAGE = "На ваш email было отправлено письмо со ссылкой подтверждения подписки";
     private static final String URL = "https://www.chitai-gorod.ru/";
@@ -81,7 +81,7 @@ public class MainPage {
         category.shouldHave(Condition.text(item.getDesc()));
         productList.shouldHave(CollectionCondition.sizeGreaterThan(0));
         productListFooter.shouldHave(CollectionCondition.itemWithText("Купить"));
-        navigationMenuHeader.shouldHave(Condition.text("Категории"));
+        navigationMenuHeader.shouldHave(CollectionCondition.itemWithText("Категории"));
         navigationItems.shouldHave(CollectionCondition.sizeGreaterThan(0));
     }
 }
