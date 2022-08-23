@@ -1,4 +1,4 @@
-package com.simbirsoft.components;
+package com.simbirsoft.pages;
 
 import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.Condition;
@@ -19,6 +19,7 @@ public class Cart {
             cardLink = $$(".basket__item-title").findBy(Condition.text("Корзина")),
             cardBookTitle = $(".basket-item__main"),
             purchaseButton = $(".basket__btn-buy"),
+            deleteButton = $(".js__delete-item-button"),
             orderPageHeader = $("#order-page h1");
 
     private final ElementsCollection
@@ -31,45 +32,54 @@ public class Cart {
             DELETE_ITEM_MESSAGE = "Товар удален из корзины.";
 
     @Step("Добавление книги в корзину")
-    public void addBookToCart(String title) {
+    public Cart addBookToCart(String title) {
         searchInput.setValue(title).pressEnter();
         bookTitles.findBy(Condition.exactText(title)).click();
         addToCardButton.click();
-
         cardItemsCount.shouldHave(Condition.text("1"));
+
+        return this;
     }
 
     @Step("Открытие корзины")
-    public void openCart() {
+    public Cart openCart() {
         cardLink.click();
+
+        return this;
     }
 
     @Step("Проверка наличия добавленной книги в корзине")
-    public void checkBookInCart(String title) {
+    public Cart checkBookInCart(String title) {
         anotherCardItemsCount.shouldHave(Condition.attribute("value", "1"));
         cardItemsList.shouldHave(CollectionCondition.sizeGreaterThan(0));
         cardBookTitle.shouldHave(Condition.text(title));
         purchaseButton.shouldBe(Condition.enabled);
+
+        return this;
     }
 
     @Step("Оформление заказа")
-    public void orderBook()  {
+    public Cart orderBook()  {
         purchaseButton.click();
-
         orderPageHeader.shouldHave(Condition.text(ORDER_HEADER_MESSAGE));
         orderStepsList.shouldHave(CollectionCondition.texts("Доставка в", "Оплата", "Контактные данные", "Подтверждение"));
+
+        return this;
     }
 
     @Step("Удаление книги из корзины")
-    public void deleteBookFromCart() {
+    public Cart deleteBookFromCart() {
         cardLink.click();
+        deleteButton.click();
 
-        $(".js__delete-item-button").click();
+        return this;
     }
 
     @Step("Проверка корзины на отсутствие элементов")
-    public void checkEmptyCart() {
+    public Cart checkEmptyCart() {
         $(".js_basket_remove_text").shouldHave(Condition.text(DELETE_ITEM_MESSAGE));
         cardItemsCount.shouldHave(Condition.text("0"));
+
+        return this;
     }
 }

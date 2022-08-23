@@ -27,21 +27,27 @@ public class DiscountPage {
     }
 
     @Step("Открытие формы ввода номера бонусной карты")
-    public void openDiscountCardInputForm() {
+    public DiscountPage openDiscountCardInputForm() {
         discountCardButton.click();
+
+        return this;
     }
 
     @Step("Валидация введенного номера карты на длину символов")
-    public void validateLengthCardNumber(String cardNumber) {
+    public DiscountPage validateLengthCardNumber(String cardNumber) {
         cardNumberInput.setValue(cardNumber);
         errorMessage.shouldHave(Condition.text(INVALID_LENGTH_ERROR_MESSAGE));
+
+        return this;
     }
 
     @Step("Валидация введенного номера карты на наличие в БД")
-    public void validateWrongCardNumber(String cardNumber) {
+    public DiscountPage validateWrongCardNumber(String cardNumber) {
         cardNumberInput.setValue(cardNumber);
         submitCardNumberButton.click();
         errorMessage.shouldHave(Condition.text(INVALID_CARD_NUMBER_ERROR_MESSAGE));
         scrollToTop.click();
+
+        return this;
     }
 }

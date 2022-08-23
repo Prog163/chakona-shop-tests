@@ -1,7 +1,6 @@
 package com.simbirsoft.pages;
 
 import com.codeborne.selenide.*;
-import com.simbirsoft.components.Vacancies;
 import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.Selenide.*;
@@ -21,29 +20,39 @@ public class JobsPage {
     private static final String URL = "https://job.chitai-gorod.ru/";
 
     @Step("Открытие страницы с вакансиями")
-    public void openPage() {
+    public JobsPage openPage() {
         open(URL);
+
+        return this;
     }
 
     @Step("Открытие списка вакансий")
-    public void openVacancies() {
+    public JobsPage openVacancies() {
         vacanciesButton.click();
+
+        return this;
     }
 
     @Step("Переключение между специальностями")
-    public void switchToJobType(Vacancies type) {
+    public JobsPage switchToJobType(Vacancies type) {
         jobTypes.findBy(Condition.text(type.getDesc())).click();
         searchButton.click();
+
+        return this;
     }
 
     @Step("Проверка списка вакансий")
-    public void checkVacanciesInJobType(Vacancies type) {
+    public JobsPage checkVacanciesInJobType(Vacancies type) {
         jobList.shouldHave(CollectionCondition.sizeGreaterThan(0));
         vacancyType.shouldHave(CollectionCondition.itemWithText(type.getDesc()));
+
+        return this;
     }
 
     @Step("Очистка фильтра поиска по специальностям")
-    public void clearJobType() {
+    public JobsPage clearJobType() {
         clearButton.click();
+
+        return this;
     }
 }

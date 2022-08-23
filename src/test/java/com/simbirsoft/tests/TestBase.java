@@ -2,8 +2,13 @@ package com.simbirsoft.tests;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
+import com.github.javafaker.Faker;
 import com.simbirsoft.config.CredentialConfig;
 import com.simbirsoft.helpers.Attach;
+import com.simbirsoft.pages.BookStores;
+import com.simbirsoft.pages.DiscountPage;
+import com.simbirsoft.pages.JobsPage;
+import com.simbirsoft.pages.MainPage;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.aeonbits.owner.Config;
 import org.aeonbits.owner.ConfigFactory;
@@ -16,6 +21,13 @@ import static java.lang.String.format;
 public class TestBase {
 
     public static CredentialConfig credentials = ConfigFactory.create(CredentialConfig.class);
+
+    MainPage mainPage = new MainPage();
+    BookStores bookStores = new BookStores();
+    DiscountPage discountPage = new DiscountPage();
+    JobsPage jobsPage = new JobsPage();
+    static Faker faker = new Faker();
+
 
     @BeforeAll
     static void setup() {

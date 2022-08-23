@@ -1,4 +1,4 @@
-package com.simbirsoft.components;
+package com.simbirsoft.pages;
 
 import com.codeborne.selenide.*;
 import io.qameta.allure.Step;
@@ -31,31 +31,38 @@ public class LoginForm {
             PROFILE_ITEMS_HEADER = "Личные данные";
 
     @Step("Открытие формы авторизации")
-    public void openLoginForm() {
+    public LoginForm openLoginForm() {
         loginFormButton.click();
         loginAndPasswordOption.click();
+
+        return this;
     }
 
     @Step("Авторизация с помощью логина и пароля")
-    public void login(String email, String password) {
+    public LoginForm login(String email, String password) {
         emailInput.setValue(email);
         passwordInput.setValue(password);
         submitButton.click();
+
+        return this;
     }
 
     @Step("Валидация авторизации при вводе некорректного логина и пароля")
-    public void checkLoginErrorMessage() {
+    public LoginForm checkLoginErrorMessage() {
         loginErrorMessage.shouldHave(Condition.text(LOGIN_ERROR_MESSAGE));
+
+        return this;
     }
 
     @Step("Проверка успешной авторизации")
-    public void checkSuccessfulLogin(String email) {
+    public LoginForm checkSuccessfulLogin(String email) {
         profileMenu.click();
-
         profileHeader.shouldHave(Condition.text(PROFILE_HEADER));
         profileDataHeader.shouldHave(Condition.text(PROFILE_ITEMS_HEADER));
         profileEmail.shouldHave(Condition.text(email));
         profileMenuItems.shouldHave(CollectionCondition.texts("Мой профиль", "Личные данные", "Заказы", "Резервы", "Бонусная карта", "Закладки", "Книжный дозор", "Выйти"));
+
+        return this;
     }
 
     @Step("Выход из профиля")

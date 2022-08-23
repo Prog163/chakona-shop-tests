@@ -1,4 +1,4 @@
-package com.simbirsoft.components;
+package com.simbirsoft.pages;
 
 public enum Vacancies {
 

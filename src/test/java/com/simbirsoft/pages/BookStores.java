@@ -39,7 +39,6 @@ public class BookStores {
     @Step("Проверка количества магазинов в городе")
     public void checkStoresCount(String expectedCount) {
         storeListButton.click();
-
         storeList.shouldHave(CollectionCondition.sizeGreaterThan(0));
         storeList.shouldHave(CollectionCondition.size(Integer.parseInt(expectedCount)));
     }
