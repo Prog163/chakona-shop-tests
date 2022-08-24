@@ -44,8 +44,7 @@ public class LoginForm {
         emailInput.setValue(email);
         passwordInput.setValue(password);
         submitButton.click();
-        popupCloseButton.should(Condition.visible);
-        popupCloseButton.click();
+
         return this;
     }
 
@@ -58,6 +57,8 @@ public class LoginForm {
 
     @Step("Проверка успешной авторизации")
     public LoginForm checkSuccessfulLogin(String email) {
+        popupCloseButton.should(Condition.visible);
+        popupCloseButton.click();
         profileMenu.click();
         profileHeader.shouldHave(Condition.text(PROFILE_HEADER));
         profileDataHeader.shouldHave(Condition.text(PROFILE_ITEMS_HEADER));
