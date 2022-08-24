@@ -17,11 +17,11 @@
 - REMOTE_URL (deafult selenoid.autotests.cloud)
 
 
-![](images/JenkinsParameters.png)
+![](images/JenkinsParameters1.png)
 
 ### To run tests localy use this command:
 ```
-gradle clean test -Dbrowser=${your_browser} -Dversion=${your_version} -Dsize=${your_size} -Dthreads=${your_number_of_threads}
+gradle clean ${your_task} -Dbrowser=${your_browser} -Dversion=${your_version} -Dsize=${your_size} -Dthreads=${your_number_of_threads}
 ```
 ### Or run tests, using default settings:
 ```
