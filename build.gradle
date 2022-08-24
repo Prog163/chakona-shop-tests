@@ -49,3 +49,45 @@ tasks.withType(Test) {
         }
     }
 }
+
+task authorization_test(type: Test) {
+    useJUnitPlatform{
+        includeTags "Authorization"
+    }
+}
+
+task search_test(type: Test) {
+    useJUnitPlatform{
+        includeTags "Search"
+    }
+}
+
+task cart_test(type: Test) {
+    useJUnitPlatform{
+        includeTags "Cart"
+    }
+}
+
+task discount_card_test(type: Test) {
+    useJUnitPlatform{
+        includeTags "Discount-card"
+    }
+}
+
+task subscribe_test(type: Test) {
+    useJUnitPlatform{
+        includeTags "Subscribe"
+    }
+}
+
+task jobs_test(type: Test) {
+    useJUnitPlatform{
+        includeTags "Vacancies"
+    }
+}
+
+task menu_test(type: Test) {
+    useJUnitPlatform{
+        includeTags "Menu-Items"
+    }
+}
