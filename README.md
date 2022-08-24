@@ -9,16 +9,19 @@
 |![](images/JAVA.svg)|![](images/Junit5.svg)|![](images/Selenide.svg)|![](images/Gradle.svg)|![](images/IDEA.svg)|![](images/AllureReport.svg)|![](images/AllureTestops.svg)|![](images/Jenkins.svg)|![](images/Selenoid.svg)|<img src="images/Jira.svg" width=100 height=100>|![](images/Telegram.svg)|
 
 ### Launch Parameters:
+- TASK (default test)
 - BROWSER (default Chrome)
 - VERSION (default 100.0)
 - SIZE (default 1024*768)
 - THREADS (default 1)
+- REMOTE_URL (deafult selenoid.autotests.cloud)
 
-![](images/JenkinsParameters.png)
+
+![](images/JenkinsParameters1.png)
 
 ### To run tests localy use this command:
 ```
-gradle clean test -Dbrowser=${your_browser} -Dversion=${your_version} -Dsize=${your_size} -Dthreads=${your_number_of_threads}
+gradle clean ${your_task} -Dbrowser=${your_browser} -Dversion=${your_version} -Dsize=${your_size} -Dthreads=${your_number_of_threads}
 ```
 ### Or run tests, using default settings:
 ```
