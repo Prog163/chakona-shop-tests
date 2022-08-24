@@ -21,7 +21,7 @@ public class LoginForm {
             profileDataHeader = $(".account-group h2"),
             profileEmail = $$(".short-personal__content").get(0),
             logoutButton = $$(".account-menu__text-link").findBy(Condition.text("Выйти")),
-            popupCloseButton = $(".js__popup__close");
+            popupCloseButton = $$(".js__popup__close").findBy(Condition.text("Не сейчас"));
 
     private final ElementsCollection
             profileMenuItems = $$(".container__leftside .account-menu__list .account-menu__item");
