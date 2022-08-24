@@ -20,7 +20,8 @@ public class LoginForm {
             profileHeader = $(".content h1"),
             profileDataHeader = $(".account-group h2"),
             profileEmail = $$(".short-personal__content").get(0),
-            logoutButton = $$(".account-menu__text-link").findBy(Condition.text("Выйти"));
+            logoutButton = $$(".account-menu__text-link").findBy(Condition.text("Выйти")),
+            popupCloseButton = $(".js__popup__close");
 
     private final ElementsCollection
             profileMenuItems = $$(".container__leftside .account-menu__list .account-menu__item");
@@ -43,7 +44,8 @@ public class LoginForm {
         emailInput.setValue(email);
         passwordInput.setValue(password);
         submitButton.click();
-
+        popupCloseButton.should(Condition.visible);
+        popupCloseButton.click();
         return this;
     }
 
