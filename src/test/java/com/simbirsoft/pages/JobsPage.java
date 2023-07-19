@@ -17,7 +17,7 @@ public class JobsPage {
             jobTypes = $$(".filter_category .control--checkbox"),
             vacancyType = $$(".vacancy__place");
 
-    private static final String URL = "https://job.chitai-gorod.ru/";
+    private static final String URL = "https://chaconne.ru/info/vacancy.php";
 
     @Step("Открытие страницы с вакансиями")
     public JobsPage openPage() {

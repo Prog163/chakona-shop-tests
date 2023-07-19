@@ -1,7 +1,5 @@
-![This is an image](https://github.com/AlexanderDankov/Chitay-Gorod-Tests/blob/master/images/Logo.png)
-
-# Chitay-Gorod-UI-Automation Project
-## UI-Automated tests for https://www.chitai-gorod.ru/
+# Chakona-UI-Automation Project
+## UI-Automated tests for https://chaconne.ru/
 
 ### Used tech stack:
 | Java | JUnit5 | Selenide | Gradle | Intelij IDEA | Allure Report | Allure Testops | Jenkins | Selenoid | Jira | Telegram |
@@ -17,7 +15,7 @@
 - REMOTE_URL (deafult selenoid.autotests.cloud)
 
 
-![](images/JenkinsParameters1.png)
+![](IMAGE!)
 
 ### To run tests localy use this command:
 ```
@@ -29,34 +27,34 @@ gradle clean test
 ```
 ## <img src="images/Jenkins.svg" width=20 height=20> Jenkins:
 ### Job overview:
-![](images/JenkinsOverview.png)
+![](IMAGE!)
 
 ## <img src="images/AllureReport.svg" width=20 height=20> Allure Report:
 ### Overview:
-![](images/AllureOverview.png)
+![](IMAGE!)
 
 ### Tests with steps, attached screenshots, page sources, logs and video:
-![](images/AllureSuites.png)
+![](IMAGE!)
 
 ### Passed test video:
-![](images/Video.gif)
+![](GIF!)
 
 ## <img src="images/AllureTestops.svg" width=20 height=20> Allure Testops:
 ### Launch:
 We can see details for each launch of tests in real-time in TMS Allure Testops
 
-![](images/AllureTestopsOverview.png)
+![](IMAGE!)
 
 ### Test cases:
-![](images/AllureTestopsCases.png)
+![](IMAGE!)
 
 ## <img src="images/Jira.svg" width=20 height=20> Jira integration:
 Test cases and test runs can be integrated to specific issue in Jira
 
-![](images/JiraOverview.png)
+![](IMAGE!)
 
 ## <img src="images/Telegram.svg" width=20 height=20> Telegram notifications:
 After every test run we can get notification with short report
 
-![](images/TelegramNotification.png)
+![](IMAGE!)
 

@@ -2,12 +2,8 @@ package com.simbirsoft.pages;
 
 public enum Vacancies {
 
-    IT("IT"),
-    ANALYTICS("Аналитика и управление данными"),
-    MARKETING("Маркетинг и реклама"),
-    TRADE("Розничная торговля"),
-    STOREHOUSE("Склад"),
-    FINANCES("Финансы и бухгалтерия");
+    CONSULTANT("Консультант с обязанностями кассира"),
+    SORTER("Сотрудник отдела сортировки");
 
     private final String desc;
 

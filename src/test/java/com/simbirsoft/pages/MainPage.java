@@ -29,7 +29,7 @@ public class MainPage {
             navigationMenuHeader = $$(".navigation__title");
 
     private final String SUBSCRIBE_MESSAGE = "На ваш email было отправлено письмо со ссылкой подтверждения подписки";
-    private static final String URL = "https://www.chitai-gorod.ru/";
+    private static final String URL = "https://chaconne.ru/";
 
     public LoginForm loginForm = new LoginForm();
     public Cart cart = new Cart();

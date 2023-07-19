@@ -2,12 +2,12 @@ package com.simbirsoft.pages;
 
 public enum MenuItems {
 
-    BOOKS("Книги"),
-    STATIONERY("Канцтовары"),
-    SOUVENIRS("Сувениры"),
-    TOYS("Игры и игрушки"),
-    CREATION("Творчество"),
-    SALE("Распродажа");
+    OFFER("Родителям и школам"),
+    DELIVERY("Доставка"),
+    SHOPS("Наши магазины"),
+    SALE("Скидки"),
+    STOCK("Акции"),
+    OFFICE("Мой кабинет");
 
     private final String desc;
 

@@ -19,7 +19,7 @@ public class DiscountPage {
             INVALID_LENGTH_ERROR_MESSAGE = "Поле должно содержать 13 символов",
             INVALID_CARD_NUMBER_ERROR_MESSAGE = "Пользователь не авторизован или указан неверный номер карты";
 
-    private static final String URL = "https://www.chitai-gorod.ru/bonus-program/";
+    private static final String URL = "https://chaconne.ru/info/discount.php";
 
     @Step("Открытие страницы Бонусная программа")
     public void openPage() {
@@ -28,6 +28,7 @@ public class DiscountPage {
 
     @Step("Открытие формы ввода номера бонусной карты")
     public DiscountPage openDiscountCardInputForm() {
+        open("https://chaconne.ru/user/card.php");
         discountCardButton.click();
 
         return this;

@@ -1,16 +1,17 @@
 {
   "base": {
-    "project": "some project",
-    "environment": "some env",
-    "comment": "some comment",
-    "reportLink": "",
+    "project": "${JOB_BASE_NAME}",
+    "environment": "environment",
+    "comment": "Test report",
+    "reportLink": "${BUILD_URL}",
     "language": "en",
+    "messenger": "telegram",
     "allureFolder": "build/allure-report/",
     "enableChart": true
   },
   "telegram": {
-    "token": "5599590582:AAFsa8Sk48Qbv0zf7I7-FrfdwN2mJenwwEc",
-    "chat": "-1001735110585",
+    "token": "6221568363:AAH-WXCd6ktZ_KZ9LXqFkcZG0WRISpFKOBc",
+    "chat": "-1001948599112",
     "replyTo": ""
   }
 }
