@@ -15,7 +15,7 @@
 - REMOTE_URL (deafult selenoid.autotests.cloud)
 
 
-![](IMAGE!)
+![](images/Jankins1.png)
 
 ### To run tests localy use this command:
 ```
