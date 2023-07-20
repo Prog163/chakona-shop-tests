@@ -1,41 +1,36 @@
 package com.simbirsoft.pages;
 
-import com.codeborne.selenide.*;
+import com.codeborne.selenide.CollectionCondition;
+import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.ElementsCollection;
+import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
+import org.openqa.selenium.By;
 
-import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$$;
+import static com.codeborne.selenide.Selenide.*;
 
 public class LoginForm {
 
     private final SelenideElement
-            loginFormButton = $(".js__showPopupLogin"),
-            loginAndPasswordOption = $(byText("Войти с логином и паролем")),
-            emailInput = $("#popup-email"),
-            passwordInput = $("#popup-password"),
-            submitButton = $("#authSubmit"),
-            loginErrorMessage = $$("div[data-chg-error-auth]").get(1),
-            profileMenu = $(".header-menu__item .header__show-menu"),
-            profileHeader = $(".content h1"),
-            profileDataHeader = $(".account-group h2"),
-            profileEmail = $$(".short-personal__content").get(0),
-            logoutButton = $$(".account-menu__text-link").findBy(Condition.text("Выйти")),
-            popupCloseButton = $$(".js__popup__close").findBy(Condition.text("Не сейчас"));
+            loginFormButton = $(".fa-vcard-o"),
+            emailInput = $(By.name("email")),
+            passwordInput = $(By.name("pass")),
+            submitButton = $(".btn-primary"),
+            loginErrorMessage = $(".alert-danger"),
+            profileMenu = $(".lk_navbar"),
+            profileOrder = $(".alert"),
+            logoutButton = $$(".nav-tabs").findBy(Condition.text("Выход"));
 
     private final ElementsCollection
-            profileMenuItems = $$(".container__leftside .account-menu__list .account-menu__item");
+            profileMenuItems = $$(".nav-tabs");
 
     private final String
-            LOGIN_ERROR_MESSAGE = "Неверный логин или пароль",
-            PROFILE_HEADER = "Мой профиль",
-            PROFILE_ITEMS_HEADER = "Личные данные";
+            LOGIN_ERROR_MESSAGE = "Такого пользователя нет в базе данных!",
+            PROFILE_ORDER = "Заказов не найдено";
 
     @Step("Открытие формы авторизации")
     public LoginForm openLoginForm() {
-        loginFormButton.click();
-        loginAndPasswordOption.click();
-
+        open("https://chaconne.ru/enter.php");
         return this;
     }
 
@@ -44,35 +39,32 @@ public class LoginForm {
         emailInput.setValue(email);
         passwordInput.setValue(password);
         submitButton.click();
-
         return this;
     }
 
     @Step("Валидация авторизации при вводе некорректного логина и пароля")
     public LoginForm checkLoginErrorMessage() {
         loginErrorMessage.shouldHave(Condition.text(LOGIN_ERROR_MESSAGE));
-
         return this;
     }
 
     @Step("Проверка успешной авторизации")
     public LoginForm checkSuccessfulLogin(String email) {
-        popupCloseButton.should(Condition.visible);
-        popupCloseButton.click();
-        profileMenu.click();
-        profileHeader.shouldHave(Condition.text(PROFILE_HEADER));
-        profileDataHeader.shouldHave(Condition.text(PROFILE_ITEMS_HEADER));
-        profileEmail.shouldHave(Condition.text(email));
-        profileMenuItems.shouldHave(CollectionCondition.texts("Мой профиль", "Личные данные", "Заказы", "Резервы", "Бонусная карта", "Закладки", "Книжный дозор", "Выйти"));
-
+        profileOrder.shouldHave(Condition.text(PROFILE_ORDER));
+        profileMenuItems.shouldHave(CollectionCondition
+                .texts(
+                "МОИ ЗАКАЗЫ " +
+                "ОТЛОЖЕННЫЕ В ФИЛИАЛЕ " +
+                "ЗАКЛАДКИ " +
+                "УВЕДОМЛЕНИЯ " +
+                "КАРТА КЛИЕНТА " +
+                "НАСТРОЙКИ " +
+                "ВЫХОД"));
         return this;
     }
 
     @Step("Выход из профиля")
     public void logout() {
-        profileMenu.click();
         logoutButton.click();
-        loginFormButton.should(Condition.visible);
-        loginFormButton.shouldHave(Condition.text("Войти"));
     }
 }

@@ -5,20 +5,21 @@ import com.codeborne.selenide.logevents.SelenideLogger;
 import com.github.javafaker.Faker;
 import com.simbirsoft.config.CredentialConfig;
 import com.simbirsoft.helpers.Attach;
+import com.simbirsoft.helpers.DriverSettings;
 import com.simbirsoft.pages.BookStores;
 import com.simbirsoft.pages.DiscountPage;
 import com.simbirsoft.pages.JobsPage;
 import com.simbirsoft.pages.MainPage;
 import io.qameta.allure.selenide.AllureSelenide;
-import org.aeonbits.owner.Config;
 import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
-import org.openqa.selenium.remote.DesiredCapabilities;
+import org.junit.jupiter.api.BeforeEach;
+import org.openqa.selenium.chrome.ChromeOptions;
 
-import static java.lang.String.format;
+import static com.simbirsoft.helpers.Attach.attachAsText;
 
-public class TestBase {
+public class TestBase extends DriverSettings {
 
     public static CredentialConfig credentials = ConfigFactory.create(CredentialConfig.class);
 
@@ -31,20 +32,20 @@ public class TestBase {
 
     @BeforeAll
     static void setup() {
-        Configuration.browser = System.getProperty("browser", "chrome");
-        Configuration.browserVersion = System.getProperty("version", "100.0");
-        Configuration.browserSize = System.getProperty("size", "1366x768");
+        Configuration.browserCapabilities = new ChromeOptions().addArguments("--remote-allow-origins=*");
+        Configuration.pageLoadStrategy = "eager";
 
         SelenideLogger.addListener("AllureListener", new AllureSelenide());
 
-        String remoteUrl = System.getProperty("remoteUrl", "selenoid.autotests.cloud");
-        Configuration.remote = format("https://%s:%s@%s/wd/hub/", credentials.remote_login(), credentials.remote_password(), remoteUrl);
+        DriverSettings.configure();
+        attachAsText("BrowserRun",System.getProperty("browserName","chrome"));
+    }
 
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("enableVNC", true);
-        capabilities.setCapability("enableVideo", true);
-        Configuration.browserCapabilities = capabilities;
-
+    @BeforeEach
+    public void setupBeforeEach() throws InterruptedException {
+        if (System.getProperty("threads") != null) {
+            Thread.sleep(10_000);
+        }
     }
 
     @AfterEach
