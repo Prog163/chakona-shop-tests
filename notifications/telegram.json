@@ -1,7 +1,7 @@
 {
   "base": {
     "project": "${JOB_BASE_NAME}",
-    "environment": "browser: ${BROWSER}, version: ${VERSION}, browser-size: ${SIZE}",,
+    "environment": "browser: ${BROWSER}, version: ${VERSION}, browser-size: ${SIZE}",
     "comment": "Test report",
     "reportLink": "${BUILD_URL}",
     "language": "en",
