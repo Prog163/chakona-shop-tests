@@ -37,7 +37,6 @@ public class MainPage {
     @Step("Открытие главной страницы")
     public MainPage openPage() {
         open(URL);
-
         return this;
     }
 
@@ -45,7 +44,6 @@ public class MainPage {
     public MainPage searchBook(String author, String title) {
         searchInput.setValue(author + " " + title).pressEnter();
         searchResultHeader.shouldHave(Condition.text("Результаты поиска  «" + author + " " + title + "»"));
-
         return this;
     }
 
@@ -54,7 +52,6 @@ public class MainPage {
         searchResults.shouldHave(CollectionCondition.sizeGreaterThan(0));
         bookTitles.shouldHave(CollectionCondition.itemWithText(title));
         bookAuthors.shouldHave(CollectionCondition.itemWithText(author));
-
         return this;
     }
 

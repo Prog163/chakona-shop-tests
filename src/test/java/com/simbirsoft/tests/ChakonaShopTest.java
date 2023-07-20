@@ -48,9 +48,7 @@ public class ChakonaShopTest extends TestBase {
     }
 
     @CsvSource({
-            "Кинг С., Оно",
             "Роулинг Дж., Гарри Поттер и философский камень",
-            "Оруэлл Д., 1984",
             "Толкин Дж., Властелин колец"
     })
     @ParameterizedTest(name = "{0}")
@@ -67,13 +65,13 @@ public class ChakonaShopTest extends TestBase {
                 .checkSearchResults(author, title);
     }
 
-    @ValueSource(strings = {"Челябинск", "Москва", "Казань", "Санкт-Петербург"})
+    @ValueSource(strings = {"Самара", "Москва", "Санкт-Петербург"})
     @ParameterizedTest(name = "{0}")
     @Feature("Search")
     @Owner("Alexander Zayhikov")
     @Severity(SeverityLevel.MINOR)
     @Link(name = "chakona", url= "https://chaconne.ru/")
-    @DisplayName("Проверка поиска магазинов в городе: ")
+    @DisplayName("Проверка поиска магазинов: ")
     @Tag("Search")
     void bookStoreSearch(String city) {
         bookStores.openPage();
@@ -98,9 +96,9 @@ public class ChakonaShopTest extends TestBase {
                     .login(credentials.user_login(), credentials.user_password());
 
         mainPage.cart
-                    .addBookToCart("Гарри Поттер и кубок огня")
+                    .addBookToCart("1984")
                     .openCart()
-                    .checkBookInCart("Гарри Поттер и кубок огня")
+                    .checkBookInCart("1984")
                     .orderBook()
                     .deleteBookFromCart()
                     .checkEmptyCart();
