@@ -65,6 +65,21 @@ public class ChakonaShopTest extends TestBase {
                 .checkSearchResults(author, title);
     }
 
+    @ValueSource(strings = {"Пазлы", "Настенные карты"})
+    @ParameterizedTest(name = "{0}")
+    @Feature("Search")
+    @Owner("Alexander Zayhikov")
+    @Severity(SeverityLevel.NORMAL)
+    @Link(name = "chakona", url= "https://chaconne.ru/")
+    @DisplayName("Проверка поиска товара по категориям: ")
+    @Tag("Search")
+    void categorySearch(String category) {
+        mainPage
+                .openPage()
+                .searchCategory(category)
+                .checkSearchResults(category);
+    }
+
     @ValueSource(strings = {"Самара", "Москва", "Санкт-Петербург"})
     @ParameterizedTest(name = "{0}")
     @Feature("Search")

@@ -19,7 +19,7 @@ public class BookStores {
             breadCrumbs = $$(".breadcrumbs__item"),
             storeList = $$(".js__shop-list-item");
 
-    public static final String URL = "https://chaconne.ru";
+    public static final String URL = "https://chaconne.ru/info/shops.php";
 
     @Step("Открытие страницы с адресами магазинов")
     public void openPage() {

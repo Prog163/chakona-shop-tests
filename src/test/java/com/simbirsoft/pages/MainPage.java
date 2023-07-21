@@ -43,8 +43,20 @@ public class MainPage {
         return this;
     }
 
+    @Step("Поиск по категории") //ОТРЕДАЧИЛ
+    public MainPage searchCategory(String category) {
+        searchInput.setValue(category).pressEnter();
+        return this;
+    }
+
     @Step("Проверка результатов поисковой выдачи") //ОТРЕДАЧИЛ
     public MainPage checkSearchResults(String author, String title) {
+        searchResults.shouldHave(CollectionCondition.sizeGreaterThan(0));
+        return this;
+    }
+
+    @Step("Проверка результатов поисковой выдачи") //ОТРЕДАЧИЛ
+    public MainPage checkSearchResults(String category) {
         searchResults.shouldHave(CollectionCondition.sizeGreaterThan(0));
         return this;
     }
