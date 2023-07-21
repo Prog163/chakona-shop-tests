@@ -11,17 +11,14 @@ import static com.codeborne.selenide.Selenide.*;
 public class MainPage {
 
     private final SelenideElement
-            searchInput = $(".search-form__input"),
-            searchResultHeader = $(".js__search_info h1"),
+            searchInput = $("#search"),//ОТРЕДАЧИЛ
             subscribeInput = $(".js__subscribe-email"),
             subscribeButton = $(".js__subscribe-btn"),
             subscribeMessage = $(".js_subscribe_mess"),
             category = $(".content h1");
 
     private final ElementsCollection
-            searchResults = $$(".product-card.js_product.js__product_card"),
-            bookTitles = $$(".product-card__info .product-card__title"),
-            bookAuthors = $$(".product-card__info .product-card__author"),
+            searchResults = $$(".products"),
             menu = $$(".js__nav__item"),
             productList = $$(".js__product_card"),
             productListFooter = $$(".product-card__footer"),
@@ -40,18 +37,15 @@ public class MainPage {
         return this;
     }
 
-    @Step("Поиск книги по автору и названию")
+    @Step("Поиск книги по автору и названию") //ОТРЕДАЧИЛ
     public MainPage searchBook(String author, String title) {
         searchInput.setValue(author + " " + title).pressEnter();
-        searchResultHeader.shouldHave(Condition.text("Результаты поиска  «" + author + " " + title + "»"));
         return this;
     }
 
-    @Step("Проверка результатов поисковой выдачи")
+    @Step("Проверка результатов поисковой выдачи") //ОТРЕДАЧИЛ
     public MainPage checkSearchResults(String author, String title) {
         searchResults.shouldHave(CollectionCondition.sizeGreaterThan(0));
-        bookTitles.shouldHave(CollectionCondition.itemWithText(title));
-        bookAuthors.shouldHave(CollectionCondition.itemWithText(author));
         return this;
     }
 

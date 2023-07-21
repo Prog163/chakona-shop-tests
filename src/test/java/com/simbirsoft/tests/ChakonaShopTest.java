@@ -48,8 +48,8 @@ public class ChakonaShopTest extends TestBase {
     }
 
     @CsvSource({
-            "Роулинг Дж., Гарри Поттер и философский камень",
-            "Толкин Дж., Властелин колец"
+            "Роулинг, Гарри Поттер",
+            "Толкин, Властелин колец"
     })
     @ParameterizedTest(name = "{0}")
     @Feature("Search")
@@ -75,9 +75,7 @@ public class ChakonaShopTest extends TestBase {
     @Tag("Search")
     void bookStoreSearch(String city) {
         bookStores.openPage();
-
         String storesCount = bookStores.findStoresInCity(city);
-
         bookStores.checkStoresCount(storesCount);
     }
 
