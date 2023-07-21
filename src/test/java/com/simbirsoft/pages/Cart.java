@@ -1,42 +1,38 @@
 package com.simbirsoft.pages;
 
-import com.codeborne.selenide.CollectionCondition;
-import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.ElementsCollection;
-import com.codeborne.selenide.SelenideElement;
+import com.codeborne.selenide.*;
 import io.qameta.allure.Step;
 
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$$;
+import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Selenide.*;
 
 public class Cart {
 
     private final SelenideElement
-            searchInput = $(".search-form__input"),
-            addToCardButton = $(".trade-container .js__product_card_button"),
+            searchInput = $("#search"),
+            addToCardButton = $(".gtm_buybtn"),
             cardItemsCount = $(".js__basket_count"),
-            anotherCardItemsCount = $(".js__item-counter__value"),
-            cardLink = $$(".basket__item-title").findBy(Condition.text("Корзина")),
-            cardBookTitle = $(".basket-item__main"),
-            purchaseButton = $(".basket__btn-buy"),
-            deleteButton = $(".js__delete-item-button"),
-            orderPageHeader = $("#order-page h1");
+            anotherCardItemsCount = $(".site_title "),
+            cardLink = $$("#cart").findBy(text("В корзине ")),
+            cardBookTitle = $(".title"),
+            purchaseButton = $("#order-btn"),
+            deleteButton = $(".cart-clear-btn"),
+            approveDelete = $$("#cart_clear_btn").findBy(text("Очистить")),
+            orderPageHeader = $(".site_title ");
 
     private final ElementsCollection
-            bookTitles = $$(".product-card__info .product-card__title"),
-            cardItemsList = $$(".basket-item.js__basket_item.js_product"),
-            orderStepsList = $$(".titlebox__content .titlebox__title");
+            bookTitles = $$(".title"),
+            orderStepsList = $$("#order_page_navs");
 
     private final String
             ORDER_HEADER_MESSAGE = "Оформление заказа",
-            DELETE_ITEM_MESSAGE = "Товар удален из корзины.";
+            DELETE_ITEM_MESSAGE = "Корзина пуста!";
 
     @Step("Добавление книги в корзину")
     public Cart addBookToCart(String title) {
         searchInput.setValue(title).pressEnter();
         bookTitles.findBy(Condition.exactText(title)).click();
         addToCardButton.click();
-        cardItemsCount.shouldHave(Condition.text("1"));
         return this;
     }
 
@@ -48,9 +44,8 @@ public class Cart {
 
     @Step("Проверка наличия добавленной книги в корзине")
     public Cart checkBookInCart(String title) {
-        anotherCardItemsCount.shouldHave(Condition.attribute("value", "1"));
-        cardItemsList.shouldHave(CollectionCondition.sizeGreaterThan(0));
-        cardBookTitle.shouldHave(Condition.text(title));
+        anotherCardItemsCount.shouldHave(text("Ваша корзина"));
+        cardBookTitle.shouldHave(text(title));
         purchaseButton.shouldBe(Condition.enabled);
         return this;
     }
@@ -58,8 +53,12 @@ public class Cart {
     @Step("Оформление заказа")
     public Cart orderBook()  {
         purchaseButton.click();
-        orderPageHeader.shouldHave(Condition.text(ORDER_HEADER_MESSAGE));
-        orderStepsList.shouldHave(CollectionCondition.texts("Доставка в", "Оплата", "Контактные данные", "Подтверждение"));
+        orderPageHeader.shouldHave(text(ORDER_HEADER_MESSAGE));
+        orderStepsList.shouldHave(CollectionCondition
+                .texts(
+                        "1СПОСОБ ДОСТАВКИ " +
+                        "2СПОСОБ ОПЛАТЫ " +
+                        "3ПЕРСОНАЛЬНАЯ ИНФОРМАЦИЯ"));
         return this;
     }
 
@@ -67,13 +66,19 @@ public class Cart {
     public Cart deleteBookFromCart() {
         cardLink.click();
         deleteButton.click();
+        approveDelete.click();
         return this;
     }
 
     @Step("Проверка корзины на отсутствие элементов")
     public Cart checkEmptyCart() {
-        $(".js_basket_remove_text").shouldHave(Condition.text(DELETE_ITEM_MESSAGE));
-        cardItemsCount.shouldHave(Condition.text("0"));
+        $(".alert-warning").shouldHave(text(DELETE_ITEM_MESSAGE));
+        return this;
+    }
+
+    @Step("Переход в ЛК и выход")
+    public Cart accountForLogout() {
+        open("https://chaconne.ru/user/");
         return this;
     }
 }

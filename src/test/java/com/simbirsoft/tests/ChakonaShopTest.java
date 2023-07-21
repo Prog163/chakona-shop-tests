@@ -105,12 +105,13 @@ public class ChakonaShopTest extends TestBase {
                     .openLoginForm()
                     .login(credentials.user_login(), credentials.user_password());
         mainPage.cart
-                    .addBookToCart("1984")
+                    .addBookToCart("Скотный двор")
                     .openCart()
-                    .checkBookInCart("1984")
+                    .checkBookInCart("Скотный двор")
                     .orderBook()
                     .deleteBookFromCart()
                     .checkEmptyCart();
+        mainPage.cart.accountForLogout();
         mainPage.loginForm.logout();
     }
 
