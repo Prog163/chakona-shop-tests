@@ -12,12 +12,10 @@ import static com.codeborne.selenide.Selenide.*;
 public class LoginForm {
 
     private final SelenideElement
-            loginFormButton = $(".fa-vcard-o"),
             emailInput = $(By.name("email")),
             passwordInput = $(By.name("pass")),
             submitButton = $(".btn-primary"),
             loginErrorMessage = $(".alert-danger"),
-            profileMenu = $(".lk_navbar"),
             profileOrder = $(".alert"),
             logoutButton = $$(".nav-tabs").findBy(Condition.text("Выход"));
 

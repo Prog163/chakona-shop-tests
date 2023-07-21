@@ -101,11 +101,9 @@ public class ChakonaShopTest extends TestBase {
     @Tag("Cart")
     void addAndRemoveBookToCart() {
         mainPage.openPage();
-
         mainPage.loginForm
                     .openLoginForm()
                     .login(credentials.user_login(), credentials.user_password());
-
         mainPage.cart
                     .addBookToCart("1984")
                     .openCart()
@@ -113,7 +111,6 @@ public class ChakonaShopTest extends TestBase {
                     .orderBook()
                     .deleteBookFromCart()
                     .checkEmptyCart();
-
         mainPage.loginForm.logout();
     }
 

@@ -37,14 +37,12 @@ public class Cart {
         bookTitles.findBy(Condition.exactText(title)).click();
         addToCardButton.click();
         cardItemsCount.shouldHave(Condition.text("1"));
-
         return this;
     }
 
     @Step("Открытие корзины")
     public Cart openCart() {
         cardLink.click();
-
         return this;
     }
 
@@ -54,7 +52,6 @@ public class Cart {
         cardItemsList.shouldHave(CollectionCondition.sizeGreaterThan(0));
         cardBookTitle.shouldHave(Condition.text(title));
         purchaseButton.shouldBe(Condition.enabled);
-
         return this;
     }
 
@@ -63,7 +60,6 @@ public class Cart {
         purchaseButton.click();
         orderPageHeader.shouldHave(Condition.text(ORDER_HEADER_MESSAGE));
         orderStepsList.shouldHave(CollectionCondition.texts("Доставка в", "Оплата", "Контактные данные", "Подтверждение"));
-
         return this;
     }
 
@@ -71,7 +67,6 @@ public class Cart {
     public Cart deleteBookFromCart() {
         cardLink.click();
         deleteButton.click();
-
         return this;
     }
 
@@ -79,7 +74,6 @@ public class Cart {
     public Cart checkEmptyCart() {
         $(".js_basket_remove_text").shouldHave(Condition.text(DELETE_ITEM_MESSAGE));
         cardItemsCount.shouldHave(Condition.text("0"));
-
         return this;
     }
 }
