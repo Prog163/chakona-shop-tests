@@ -85,7 +85,7 @@ public class ChakonaShopTest extends TestBase {
     @Owner("Alexander Zayhikov")
     @Severity(SeverityLevel.MINOR)
     @Link(name = "chakona", url= "https://chaconne.ru/")
-    @DisplayName("Проверка списка магазинов по городам: ")
+    @DisplayName("Проверка списка магазинов по городам ")
     @Tag("Search")
     void bookStoreSearch() {
         bookStores.openPage();
