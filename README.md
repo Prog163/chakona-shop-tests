@@ -31,10 +31,10 @@ gradle clean test
 
 ## <img src="images/AllureReport.svg" width=20 height=20> Allure Report:
 ### Overview:
-![](IMAGE!)
+![](images/AllurePage.png)
 
 ### Tests with steps, attached screenshots, page sources, logs and video:
-![](IMAGE!)
+![](images/AllureStepsResult.png)
 
 ### Passed test video:
 ![](GIF!)
