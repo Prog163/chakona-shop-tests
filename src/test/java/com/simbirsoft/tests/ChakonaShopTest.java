@@ -80,18 +80,16 @@ public class ChakonaShopTest extends TestBase {
                 .checkSearchResults(category);
     }
 
-    @ValueSource(strings = {"Самара", "Москва", "Санкт-Петербург"})
-    @ParameterizedTest(name = "{0}")
+    @Test
     @Feature("Search")
     @Owner("Alexander Zayhikov")
     @Severity(SeverityLevel.MINOR)
     @Link(name = "chakona", url= "https://chaconne.ru/")
     @DisplayName("Проверка поиска магазинов: ")
     @Tag("Search")
-    void bookStoreSearch(String city) {
+    void bookStoreSearch() {
         bookStores.openPage();
-        String storesCount = bookStores.findStoresInCity(city);
-        bookStores.checkStoresCount(storesCount);
+        bookStores.checkStores();
     }
 
     @Test

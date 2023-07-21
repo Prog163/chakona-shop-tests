@@ -32,10 +32,15 @@ public class Attach {
     }
 
     public static void browserConsoleLogs() {
-        attachAsText(
-                "Browser console logs",
-                String.join("\n", Selenide.getWebDriverLogs(BROWSER))
-        );
+        if ("firefox".equals(System.getProperty("browserName"))) {
+            attachAsText(
+                    "Browser console logs", "No logs available");
+        } else {
+            attachAsText(
+                    "Browser console logs",
+                    String.join("\n", Selenide.getWebDriverLogs(BROWSER))
+            );
+        }
     }
 
     @Attachment(value = "Video", type = "text/html", fileExtension = ".html")
@@ -56,7 +61,7 @@ public class Attach {
         return null;
     }
 
-    public static String getSessionId(){
+    public static String getSessionId() {
         return ((RemoteWebDriver) getWebDriver()).getSessionId().toString();
     }
 }
