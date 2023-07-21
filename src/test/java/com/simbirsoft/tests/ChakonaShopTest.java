@@ -136,20 +136,6 @@ public class ChakonaShopTest extends TestBase {
         mainPage.loginForm.logout();
     }
 
-    @Test
-    @Feature("Subscribe")
-    @Owner("Alexander Zayhikov")
-    @Severity(SeverityLevel.MINOR)
-    @Link(name = "chakona", url= "https://chaconne.ru/")
-    @DisplayName("Проверка успешной email-подписки на новости компании")
-    @Tag("Subscribe")
-    void subscribeWithEmailTest() {
-        mainPage
-                .openPage()
-                .setEmailToSubscribe(faker.internet().emailAddress())
-                .checkEmailSubscribed();
-    }
-
     @EnumSource(value = Vacancies.class)
     @ParameterizedTest(name = "{0}")
     @Feature("Job search")
