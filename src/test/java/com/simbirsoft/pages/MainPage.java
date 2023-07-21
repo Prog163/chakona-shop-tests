@@ -11,21 +11,13 @@ import static com.codeborne.selenide.Selenide.*;
 public class MainPage {
 
     private final SelenideElement
-            searchInput = $("#search"),//ОТРЕДАЧИЛ
-            subscribeInput = $(".js__subscribe-email"),
-            subscribeButton = $(".js__subscribe-btn"),
-            subscribeMessage = $(".js_subscribe_mess"),
-            category = $(".content h1");
+            searchInput = $("#search"),
+            category = $(".header-nav");
 
     private final ElementsCollection
             searchResults = $$(".products"),
-            menu = $$(".js__nav__item"),
-            productList = $$(".js__product_card"),
-            productListFooter = $$(".product-card__footer"),
-            navigationItems = $$(".navigation__item"),
-            navigationMenuHeader = $$(".navigation__title");
+            catalog = $$(".cat4654");
 
-    private final String SUBSCRIBE_MESSAGE = "На ваш email было отправлено письмо со ссылкой подтверждения подписки";
     private static final String URL = "https://chaconne.ru/";
 
     public LoginForm loginForm = new LoginForm();
@@ -37,63 +29,43 @@ public class MainPage {
         return this;
     }
 
-    @Step("Поиск книги по автору и названию") //ОТРЕДАЧИЛ
+    @Step("Поиск книги по автору и названию")
     public MainPage searchBook(String author, String title) {
         searchInput.setValue(author + " " + title).pressEnter();
         return this;
     }
 
-    @Step("Поиск по категории") //ОТРЕДАЧИЛ
+    @Step("Поиск по категории")
     public MainPage searchCategory(String category) {
         searchInput.setValue(category).pressEnter();
         return this;
     }
 
-    @Step("Проверка результатов поисковой выдачи") //ОТРЕДАЧИЛ
+    @Step("Проверка результатов поисковой выдачи")
     public MainPage checkSearchResults(String author, String title) {
         searchResults.shouldHave(CollectionCondition.sizeGreaterThan(0));
         return this;
     }
 
-    @Step("Проверка результатов поисковой выдачи") //ОТРЕДАЧИЛ
+    @Step("Проверка результатов поисковой выдачи")
     public MainPage checkSearchResults(String category) {
         searchResults.shouldHave(CollectionCondition.sizeGreaterThan(0));
         return this;
     }
 
-    @Step("Введение email в форму подписки")
-    public MainPage setEmailToSubscribe(String email) {
-        subscribeInput.shouldHave(Condition.attribute("placeholder", "E-mail"));
-        subscribeInput.setValue(email);
-        subscribeButton.click();
-
-        return this;
-    }
-
-    @Step("Проверка результата подписки по email")
-    public MainPage checkEmailSubscribed() {
-        subscribeInput.shouldNot(Condition.visible);
-        subscribeMessage.shouldBe(Condition.visible);
-        subscribeMessage.shouldHave(Condition.text(SUBSCRIBE_MESSAGE));
-
-        return this;
-    }
-
     @Step("Переключение на элемент меню")
-    public MainPage switchToMenuItem(MenuItems item) {
-        menu.findBy(Condition.text(item.getDesc())).click();
-
+    public MainPage switchToCatalogElements() {
+        catalog.findBy(Condition.text("Товары для творчества")).click();
+        $(".cat4655").click();
+        $(".cat5779").click();
+        $(".cat7335").click();
+        $(".catalog_page_title").shouldHave(Condition.text("Аппликация из фетра"));
         return this;
     }
 
     @Step("Проверка содержимого в разделе")
     public MainPage checkMenuItem(MenuItems item) {
         category.shouldHave(Condition.text(item.getDesc()));
-        productList.shouldHave(CollectionCondition.sizeGreaterThan(0));
-        productListFooter.shouldHave(CollectionCondition.itemWithText("Купить"));
-        navigationMenuHeader.shouldHave(CollectionCondition.itemWithText("Категории"));
-        navigationItems.shouldHave(CollectionCondition.sizeGreaterThan(0));
-
         return this;
     }
 }

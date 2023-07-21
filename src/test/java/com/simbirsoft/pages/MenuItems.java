@@ -2,7 +2,7 @@ package com.simbirsoft.pages;
 
 public enum MenuItems {
 
-    OFFER("Родителям и школам"),
+    FAMILY("Родителям и школам"),
     DELIVERY("Доставка"),
     SHOPS("Наши магазины"),
     SALE("Скидки"),

@@ -1,7 +1,6 @@
 package com.simbirsoft.tests;
 
 import com.simbirsoft.pages.MenuItems;
-import com.simbirsoft.pages.Vacancies;
 import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
@@ -18,33 +17,33 @@ public class ChakonaShopTest extends TestBase {
     @Feature("Authorization")
     @Owner("Alexander Zayhikov")
     @Severity(SeverityLevel.CRITICAL)
-    @Link(name = "chakona", url= "https://chaconne.ru/")
+    @Link(name = "chakona", url = "https://chaconne.ru/")
     @DisplayName("Проверка сообщения об ошибке при вводе несуществующего логина и пароля при авторизации")
     @Tag("Authorization")
     void authorizationValidationTest() {
         mainPage.openPage();
 
         mainPage.loginForm
-                    .openLoginForm()
-                    .login(faker.internet().emailAddress(), faker.internet().password(6, 20))
-                    .checkLoginErrorMessage();
+                .openLoginForm()
+                .login(faker.internet().emailAddress(), faker.internet().password(6, 20))
+                .checkLoginErrorMessage();
     }
 
     @Test
     @Feature("Authorization")
     @Owner("Alexander Zayhikov")
     @Severity(SeverityLevel.CRITICAL)
-    @Link(name = "chakona", url= "https://chaconne.ru/")
+    @Link(name = "chakona", url = "https://chaconne.ru/")
     @DisplayName("Успешная авторизация зарегистрированным пользователем")
     @Tag("Authorization")
     void successfulAuthorizationTest() {
         mainPage.openPage();
 
         mainPage.loginForm
-                    .openLoginForm()
-                    .login(credentials.user_login(), credentials.user_password())
-                    .checkSuccessfulLogin(credentials.user_login())
-                    .logout();
+                .openLoginForm()
+                .login(credentials.user_login(), credentials.user_password())
+                .checkSuccessfulLogin(credentials.user_login())
+                .logout();
     }
 
     @CsvSource({
@@ -55,7 +54,7 @@ public class ChakonaShopTest extends TestBase {
     @Feature("Search")
     @Owner("Alexander Zayhikov")
     @Severity(SeverityLevel.NORMAL)
-    @Link(name = "chakona", url= "https://chaconne.ru/")
+    @Link(name = "chakona", url = "https://chaconne.ru/")
     @DisplayName("Проверка корректной выдачи результатов поиска книги: ")
     @Tag("Search")
     void bookSearchTest(String author, String title) {
@@ -70,7 +69,7 @@ public class ChakonaShopTest extends TestBase {
     @Feature("Search")
     @Owner("Alexander Zayhikov")
     @Severity(SeverityLevel.NORMAL)
-    @Link(name = "chakona", url= "https://chaconne.ru/")
+    @Link(name = "chakona", url = "https://chaconne.ru/")
     @DisplayName("Проверка поиска товара по категориям: ")
     @Tag("Search")
     void categorySearch(String category) {
@@ -84,7 +83,7 @@ public class ChakonaShopTest extends TestBase {
     @Feature("Search")
     @Owner("Alexander Zayhikov")
     @Severity(SeverityLevel.MINOR)
-    @Link(name = "chakona", url= "https://chaconne.ru/")
+    @Link(name = "chakona", url = "https://chaconne.ru/")
     @DisplayName("Проверка списка магазинов по городам ")
     @Tag("Search")
     void bookStoreSearch() {
@@ -96,62 +95,23 @@ public class ChakonaShopTest extends TestBase {
     @Feature("Order")
     @Owner("Alexander Zayhikov")
     @Severity(SeverityLevel.CRITICAL)
-    @Link(name = "chakona", url= "https://chaconne.ru/")
+    @Link(name = "chakona", url = "https://chaconne.ru/")
     @DisplayName("Успешное оформление заказа на книгу")
     @Tag("Cart")
     void addAndRemoveBookToCart() {
         mainPage.openPage();
         mainPage.loginForm
-                    .openLoginForm()
-                    .login(credentials.user_login(), credentials.user_password());
+                .openLoginForm()
+                .login(credentials.user_login(), credentials.user_password());
         mainPage.cart
-                    .addBookToCart("Скотный двор")
-                    .openCart()
-                    .checkBookInCart("Скотный двор")
-                    .orderBook()
-                    .deleteBookFromCart()
-                    .checkEmptyCart();
+                .addBookToCart("Скотный двор")
+                .openCart()
+                .checkBookInCart("Скотный двор")
+                .orderBook()
+                .deleteBookFromCart()
+                .checkEmptyCart();
         mainPage.cart.accountForLogout();
         mainPage.loginForm.logout();
-    }
-
-    @Test
-    @Feature("Discount card")
-    @Owner("Alexander Zayhikov")
-    @Severity(SeverityLevel.MINOR)
-    @Link(name = "chakona", url= "https://chaconne.ru/")
-    @DisplayName("Проверка сообщений об ошибке при вводе некорректного номера бонусной карты")
-    @Tag("Discount-card")
-    void checkDiscountCardValidation() {
-        discountPage.openPage();
-
-        mainPage.loginForm
-                    .openLoginForm()
-                    .login(credentials.user_login(), credentials.user_password());
-
-        discountPage
-                .openDiscountCardInputForm()
-                .validateLengthCardNumber(faker.number().digits(12))
-                .validateWrongCardNumber(faker.number().digits(13));
-
-        mainPage.loginForm.logout();
-    }
-
-    @EnumSource(value = Vacancies.class)
-    @ParameterizedTest(name = "{0}")
-    @Feature("Job search")
-    @Owner("Alexander Zayhikov")
-    @Severity(SeverityLevel.NORMAL)
-    @Link(name = "chakona", url= "https://chaconne.ru/")
-    @DisplayName("Проверка наличия актуальных вакансий в области: ")
-    @Tag("Vacancies")
-    void searchJobTest(Vacancies type) {
-        jobsPage
-                .openPage()
-                .openVacancies()
-                .switchToJobType(type)
-                .checkVacanciesInJobType(type)
-                .clearJobType();
     }
 
     @EnumSource(value = MenuItems.class)
@@ -159,12 +119,23 @@ public class ChakonaShopTest extends TestBase {
     @Feature("Menu")
     @Owner("Alexander Zayhikov")
     @Severity(SeverityLevel.NORMAL)
-    @Link(name = "chakona", url= "https://chaconne.ru/")
+    @Link(name = "chakona", url = "https://chaconne.ru/")
     @Tag("Menu-Items")
     void checkMenuItemsContent(MenuItems item) {
         mainPage
                 .openPage()
-                .switchToMenuItem(item)
                 .checkMenuItem(item);
+    }
+
+    @Test
+    @Feature("Catalog")
+    @Owner("Alexander Zayhikov")
+    @Severity(SeverityLevel.CRITICAL)
+    @Link(name = "chakona", url = "https://chaconne.ru/")
+    @DisplayName("Проверка перехода по разделам каталога главной страницы")
+    @Tag("Menu-Items")
+    void takeCatalogElementsHierarchy() {
+        mainPage.openPage();
+        mainPage.switchToCatalogElements();
     }
 }

@@ -14,7 +14,7 @@ public class BookStores {
             storeListButton = $(".page_content");
 
     private final ElementsCollection
-            storeList = $$(".shops"); //Отредачил
+            storeList = $$(".shops");
 
     public static final String URL = "https://chaconne.ru/info/shops.php";
 

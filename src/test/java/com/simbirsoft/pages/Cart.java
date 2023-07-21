@@ -11,7 +11,6 @@ public class Cart {
     private final SelenideElement
             searchInput = $("#search"),
             addToCardButton = $(".gtm_buybtn"),
-            cardItemsCount = $(".js__basket_count"),
             anotherCardItemsCount = $(".site_title "),
             cardLink = $$("#cart").findBy(text("В корзине ")),
             cardBookTitle = $(".title"),
