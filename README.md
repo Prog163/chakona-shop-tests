@@ -45,13 +45,17 @@ We can see details for each launch of tests in real-time in TMS Allure Testops
 
 ![](IMAGE!)
 
+Dashboard
+
+![](images/Dashboardtestops.png)
+
 ### Test cases:
-![](IMAGE!)
+![](images/TKfromtestops.png)
 
 ## <img src="images/Jira.svg" width=20 height=20> Jira integration:
 Test cases and test runs can be integrated to specific issue in Jira
 
-![](IMAGE!)
+![](images/Jiraintegration.png)
 
 ## <img src="images/Telegram.svg" width=20 height=20> Telegram notifications:
 After every test run we can get notification with short report
