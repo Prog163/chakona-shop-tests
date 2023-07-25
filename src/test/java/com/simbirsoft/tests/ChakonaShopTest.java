@@ -14,6 +14,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 public class ChakonaShopTest extends TestBase {
 
     @Test
+    @AllureId("24382")
     @Feature("Authorization")
     @Owner("Alexander Zayhikov")
     @Severity(SeverityLevel.CRITICAL)
