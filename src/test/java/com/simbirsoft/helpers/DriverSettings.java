@@ -32,7 +32,7 @@ public class DriverSettings {
         Configuration.baseUrl = "https://chaconne.ru/";
 
         if (System.getProperty("remoteUrl") != null) {
-            Configuration.remote = format("https://%s:%s@%s", login, password, remoteURL);
+            Configuration.remote = format("https://%s:%s@%s/wd/hub/", login, password, remoteURL);
         }
     }
 }
