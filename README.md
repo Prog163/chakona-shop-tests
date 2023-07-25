@@ -60,5 +60,5 @@ Test cases and test runs can be integrated to specific issue in Jira
 ## <img src="images/Telegram.svg" width=20 height=20> Telegram notifications:
 After every test run we can get notification with short report
 
-![]()
+![](images/TGreport.png)
 
