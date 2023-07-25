@@ -1,9 +1,9 @@
 {
   "base": {
-    "project": "${JOB_BASE_NAME}",
-    "environment": "browser: ${BROWSER}, version: ${VERSION}, browser-size: ${SIZE}",
+    "project": "Chakona-Shop-Tests",
+    "environment": "some env",
     "comment": "Test report",
-    "reportLink": "${BUILD_URL}",
+    "reportLink": "",
     "language": "en",
     "messenger": "telegram",
     "allureFolder": "build/allure-report/",
