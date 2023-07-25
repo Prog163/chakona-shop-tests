@@ -27,7 +27,7 @@ gradle clean test
 ```
 ## <img src="images/Jenkins.svg" width=20 height=20> Jenkins:
 ### Job overview:
-![](IMAGE!)
+![](images/JobOverview.png)
 
 ## <img src="images/AllureReport.svg" width=20 height=20> Allure Report:
 ### Overview:
