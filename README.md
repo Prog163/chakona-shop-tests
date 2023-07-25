@@ -37,7 +37,7 @@ gradle clean test
 ![](images/AllureDetailsResult.png)
 
 ### Passed test video:
-![](GIF!)
+![](images/db5110c9fa7a10d92583b88c7b95b0b3.gif)
 
 ## <img src="images/AllureTestops.svg" width=20 height=20> Allure Testops:
 ### Launch:
@@ -60,5 +60,5 @@ Test cases and test runs can be integrated to specific issue in Jira
 ## <img src="images/Telegram.svg" width=20 height=20> Telegram notifications:
 After every test run we can get notification with short report
 
-![](IMAGE!)
+![]()
 
