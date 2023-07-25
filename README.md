@@ -27,14 +27,14 @@ gradle clean test
 ```
 ## <img src="images/Jenkins.svg" width=20 height=20> Jenkins:
 ### Job overview:
-![](images/JobOverview.png)
+![](images/JobOverviewView.png)
 
 ## <img src="images/AllureReport.svg" width=20 height=20> Allure Report:
 ### Overview:
-![](images/AllurePage.png)
+![](images/AllurePageResults.png)
 
 ### Tests with steps, attached screenshots, page sources, logs and video:
-![](images/AllureStepsResult.png)
+![](images/AllureDetailsResult.png)
 
 ### Passed test video:
 ![](GIF!)
@@ -43,19 +43,19 @@ gradle clean test
 ### Launch:
 We can see details for each launch of tests in real-time in TMS Allure Testops
 
-![](IMAGE!)
+![](images/AllureTestOpsLaunch.png)
 
 Dashboard
 
-![](images/Dashboardtestops.png)
+![](images/AllureDashboardTestOps.png)
 
 ### Test cases:
-![](images/TKfromtestops.png)
+![](images/TestCasesFromTestOps.png)
 
 ## <img src="images/Jira.svg" width=20 height=20> Jira integration:
 Test cases and test runs can be integrated to specific issue in Jira
 
-![](images/Jiraintegration.png)
+![](images/JiraIntegration.png)
 
 ## <img src="images/Telegram.svg" width=20 height=20> Telegram notifications:
 After every test run we can get notification with short report
