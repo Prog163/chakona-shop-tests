@@ -85,21 +85,9 @@ task cart_test(type: Test) {
     }
 }
 
-task discount_card_test(type: Test) {
-    useJUnitPlatform{
-        includeTags "Discount-card"
-    }
-}
-
 task subscribe_test(type: Test) {
     useJUnitPlatform{
         includeTags "Subscribe"
-    }
-}
-
-task jobs_test(type: Test) {
-    useJUnitPlatform{
-        includeTags "Vacancies"
     }
 }
 
