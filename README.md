@@ -1,5 +1,5 @@
 # Chakona-UI-Automation Project
-## UI-Automated tests for https://chaconne.ru/
+## UI-Automated tests for [Chakone](https://chaconne.ru)
 
 ### Used tech stack:
 | Java | JUnit5 | Selenide | Gradle | Intelij IDEA | Allure Report | Allure Testops | Jenkins | Selenoid | Jira | Telegram |
